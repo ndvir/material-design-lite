@@ -1,0 +1,108 @@
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import "variables";
+
+.mdl-fab {
+  @include mdl-shadow-4dp;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  border: none;
+  border-radius: 50%;
+  background-color: var(--mdl-theme-color-accent);
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+  fill: currentColor;
+  -webkit-appearance: none;
+
+  &--mini {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--plain {
+    background-color: white;
+    color: rgba(0, 0, 0, .87);
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 120ms cubic-bezier(0, 0, .2, 1);
+    border-radius: inherit;
+    content: "";
+  }
+
+  &::before {
+    background: black;
+    opacity: 0;
+  }
+
+  &:focus::before {
+    opacity: .12;
+  }
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  &:active::after {
+    opacity: .06;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    @include mdl-focus-shadow;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  /* stylelint-disable selector-no-type */
+  fieldset:disabled &,
+  &:disabled {
+    background-color: rgba(0, 0, 0, .12);
+    color: rgba(0, 0, 0, .26);
+    cursor: default;
+    pointer-events: none;
+  }
+}
